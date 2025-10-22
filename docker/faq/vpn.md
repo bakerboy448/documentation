@@ -111,6 +111,14 @@ PIA endpoints that support port forwarding (incoming port) can be seen in the lo
 
 * Upload rate set too high/unlimited - Failure to correctly define your upload speed will mean your connection will be choked, resulting in low download speeds. The solution to this is to define your upload rate as about 3/4 of your theoretical maximum upload rate (keeping in mind this is defined in Bytes (big B) NOT bits (small b)).
 
+* (qBittorrent specific) Use TCP - There have been reports of significant speed increases by setting 'Peer connection protocol' to 'TCP'. This can be achieved by going to 'Options' in the qBittorrent Web UI, then select 'Connection' tab and then set 'Peer connection protocol' to 'TCP' and click on 'save at the bottom'.
+
+* (Deluge specific) Disable in/out uTP - There have been reports of significant speed increases by disabling uTP. This can be achieved by installing the Deluge plugin 'itconfig'. Once installed, make sure to disable both 'enable_incoming_utp' and 'enable_outgoing_utp', then restart the container.
+
+* (Deluge specific) Rate limit overhead enabled - If the option in the Deluge Web UI in the "Bandwidth" section labelled "Rate limit IP overhead" is ticked, this can result in low speeds. Please untick this option.
+
+* VPN endpoint has low bandwidth - Not all VPN endpoints are equal; some will have larger allocations of bandwidth than others. You will need to check with your VPN provider to identify which are the faster endpoints and connect to one of these.
+
 * (VPN provider specific) Use GCM cipher instead of CBC - If the VPN provider you are using supports AES-128-GCM/AES-256-GCM (PIA does support this), then by switching to GCM you can improve security (stronger cipher), reduce CPU load, and potentially improve dl/ul speeds when compared to using traditional ciphers such as CBC. To achieve this, you simply edit the OVPN configuration file located in /config/openvpn/ and include the following lines. Once saved, restart the container:
 
 ```text
@@ -120,12 +128,6 @@ ncp-disable
 ```
 
 **Note** - Please ensure you remove any other existing lines that may clash with the lines above.
-
-* (Deluge specific) Disable in/out uTP - There have been reports of significant speed increases by disabling uTP. This can be achieved by installing the Deluge plugin 'itconfig'. Once installed, make sure to disable both 'enable_incoming_utp' and 'enable_outgoing_utp', then restart the container.
-
-* (Deluge specific) Rate limit overhead enabled - If the option in the Deluge Web UI in the "Bandwidth" section labelled "Rate limit IP overhead" is ticked, this can result in low speeds. Please untick this option.
-
-* VPN endpoint has low bandwidth - Not all VPN endpoints are equal; some will have larger allocations of bandwidth than others. You will need to check with your VPN provider to identify which are the faster endpoints and connect to one of these.
 
 * Highly fragmented disk - If your disk has a lot of fragmentation, then speeds can be low due to the significantly reduced I/O that a fragmented disk can cause. This can be fixed by performing a disk defrag to optimize the disk.
 
