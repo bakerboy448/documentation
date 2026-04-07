@@ -23,7 +23,7 @@
 
 1. Open Unraid Web UI/Docker, left-click qBittorrent, and select `Edit`.
 2. Go to `Container Variable: WEBUI_PORT`, click on `Edit`, and set the `Value` to the port number you want to run the Web UI on, then click `Save`.
-3. Find `Container Port: 8080` and click on `Remove`.
+3. Find `Port: Web Interface:` and click on `Remove`.
 4. Click on the blue link `Add another Path, Port, Variable, Label or Device` and select `Config Type` of `Port`.
 5. Set the `Container Port:` and `Host Port:` to the same value as the `Container Variable: WEBUI_PORT`, then click on `Add`.
 6. Click on `Apply` at the bottom and wait for the container to be recreated.
