@@ -107,3 +107,13 @@ The above procedures MAY cause loss of metadata (NOT media), as you will be roll
 
 **Notes**<br/>
 The above procedures MAY cause loss of metadata (NOT media) and other unforeseen issues (configuration). Repairing the database will result in deletion of the corrupt data, so further metadata scraping and/or configuration may be required after the repair.
+
+**Q5.**  I've been experiencing playback issues with many movies, they play on Apple devices but there seem to be problems with playback on certain devices, such as Android devices, what could be the cause of this and how do i fix it?.
+
+**A5.** This is commonly caused by a corruption of one or more of the built in Plex Codecs, the fix is to force Plex to re-create them by deleting the following folder:
+
+```bash
+/config/Plex Media Server/Codecs
+```
+
+Once you have deleted the folder perform a restart of the container to force the Codecs to be re-created.
